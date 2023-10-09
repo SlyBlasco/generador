@@ -57,6 +57,113 @@ public class ui extends javax.swing.JFrame {
         String FechaFinal = año + mes + dia;
         return FechaFinal;
     }
+    public String EntidadesAsiglas(){
+        
+        data entidad = new data();
+      entidad.setEntidad((String) cbEntidad.getSelectedItem());  
+       if (entidad.getEntidad()=="Aguascalientes"){
+        	entidad.setEntidad("AS"); 
+        }
+       if (entidad.getEntidad()=="Baja California"){
+        	entidad.setEntidad("BC"); 
+        }
+       if (entidad.getEntidad()=="Baja California Sur"){
+        	entidad.setEntidad("BS"); 
+        }
+       if (entidad.getEntidad()=="Campeche"){
+        	entidad.setEntidad("CC"); 
+        }
+       if (entidad.getEntidad()=="Coahuila de Zaragoza"){
+        	entidad.setEntidad("CL");
+        }
+       if (entidad.getEntidad()=="Colima"){
+        	entidad.setEntidad("CM"); 
+        }
+       if (entidad.getEntidad()=="Chiapas"){
+        	entidad.setEntidad("CS"); 
+        }
+       if (entidad.getEntidad()=="Chihuahua"){
+        	entidad.setEntidad("CH");
+        }
+       if (entidad.getEntidad()=="Ciudad de Mexico"){
+        	entidad.setEntidad("DF"); 
+        }
+       if (entidad.getEntidad()=="Durango"){
+        	entidad.setEntidad("DG"); 
+        }
+        if (entidad.getEntidad()=="Guanajuato"){
+        	entidad.setEntidad("GT");
+        }
+        if (entidad.getEntidad()=="Guerrero"){
+        	entidad.setEntidad("GR"); 
+        }
+        if (entidad.getEntidad()=="Hidalgo"){
+        	entidad.setEntidad("HG");
+        }
+        if (entidad.getEntidad()=="Jalisco"){
+        	entidad.setEntidad("JC"); 
+        }
+        if (entidad.getEntidad()=="Mexico"){
+        	entidad.setEntidad("MC"); 
+        }
+        if (entidad.getEntidad()=="Michoacan de Ocampo"){
+        	entidad.setEntidad("MN"); 
+        }
+        if (entidad.getEntidad()=="Morelos"){
+        	entidad.setEntidad("MS");
+        }
+        if (entidad.getEntidad()=="Nayarit"){
+        	entidad.setEntidad("NT");
+        }
+        if (entidad.getEntidad()=="NuevoLeon"){
+        	entidad.setEntidad("NL");
+        }
+      	if (entidad.getEntidad()=="Oaxaca"){
+        	entidad.setEntidad("OC");
+        }
+        if (entidad.getEntidad()=="Puebla"){
+        	entidad.setEntidad("PL"); 
+        }
+       	if (entidad.getEntidad()=="Queretaro"){
+        	entidad.setEntidad("QT"); 
+        }
+        if (entidad.getEntidad()=="QuintanaRoo"){
+        	entidad.setEntidad("QR"); 
+        }
+        if (entidad.getEntidad()=="SanLuisPotosi"){
+        	entidad.setEntidad("SP"); 
+        }
+        if (entidad.getEntidad()=="Sinaloa"){
+        	entidad.setEntidad("SL");
+        }
+        if (entidad.getEntidad()=="Sonora"){
+        	entidad.setEntidad("SR"); 
+        }
+        if (entidad.getEntidad()=="Tabasco"){
+        	entidad.setEntidad("TC");
+        }
+        if (entidad.getEntidad()=="Tamaulipas"){
+        	entidad.setEntidad("TS");
+        }
+        if (entidad.getEntidad()=="Tlaxcala"){
+        	entidad.setEntidad("TL");
+        }
+        if (entidad.getEntidad()=="Veracruz de Ignacio de la Llave"){
+        	entidad.setEntidad("VZ");
+        }
+        if (entidad.getEntidad()=="Yucatan"){
+        	entidad.setEntidad("YN"); 
+        }
+        if (entidad.getEntidad()=="Zacatecas"){
+        	entidad.setEntidad("ZS");
+        }
+        if (entidad.getEntidad()=="Nacido en el Extranjero"){
+                entidad.setEntidad("NE");
+        }
+       
+    
+        return entidad.getEntidad();
+    }
 
     // Metodo que genera la curp
     public void curp() {
