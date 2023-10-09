@@ -164,6 +164,18 @@ public class ui extends javax.swing.JFrame {
     
         return entidad.getEntidad();
     }
+    // Metodo para comprobar si el char actual es vocal.
+    public static boolean esVocal(char letra) {
+        char[] vocales = {'a', 'e', 'i', 'o', 'u'};
+        char letraLowerCase = Character.toLowerCase(letra);
+        for (char vocal : vocales) {
+            if (letraLowerCase == vocal) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     // Metodo que busca la primera consonate no inicial en el primer apellido
     public static char encontrarPrimeraConsonanteInterna(String apellido) {
         char[] vocales = {'a', 'e', 'i', 'o', 'u'};
@@ -179,18 +191,7 @@ public class ui extends javax.swing.JFrame {
 
         return primeraConsonante;
     }
-
-    public static boolean esVocal(char letra) {
-        char[] vocales = {'a', 'e', 'i', 'o', 'u'};
-        char letraLowerCase = Character.toLowerCase(letra);
-        for (char vocal : vocales) {
-            if (letraLowerCase == vocal) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
+    // Metodo que busca la primera consonate no inicial en el segundo apellido
     public static char encontrarPrimeraConsonanteInterna2(String segundoApellido) {
         char[] vocales = {'a', 'e', 'i', 'o', 'u'};
         char primeraConsonante = '\0';
@@ -201,6 +202,25 @@ public class ui extends javax.swing.JFrame {
 
         for (int i = 1; i < segundoApellido.length(); i++) {
             char letra = Character.toLowerCase(segundoApellido.charAt(i));
+            if (Character.isLetter(letra) && !esVocal(letra)) {
+                primeraConsonante = letra;
+                break;
+            }
+        }
+
+        return primeraConsonante;
+    }
+    // Metodo que busca la primera consonate no inicial en el nombre
+    public static char encontrarPrimeraConsonanteInternaNombre(String nombre){
+        char[] vocales = {'a', 'e', 'i', 'o', 'u'};
+        char primeraConsonante = '\0';
+
+        if (nombre.isEmpty()) {
+            return 'X';
+        }
+
+        for (int i = 1; i < nombre.length(); i++) {
+            char letra = Character.toLowerCase(nombre.charAt(i));
             if (Character.isLetter(letra) && !esVocal(letra)) {
                 primeraConsonante = letra;
                 break;
@@ -253,8 +273,11 @@ public class ui extends javax.swing.JFrame {
         //Primera Consonante interna no inicial del segundo apellido
         encontrarPrimeraConsonanteInterna2(entidad.getApellidoMaterno());
         
+        //Primera consonante interna no incial del nombre
+        encontrarPrimeraConsonanteInternaNombre(entidad.getNombre());
+        
         //TESTEO!!!!
-        JOptionPane.showMessageDialog(null, PrimerLetraApellidoMaterno(entidad.getApellidoMaterno()));
+        JOptionPane.showMessageDialog(null, encontrarPrimeraConsonanteInternaNombre(entidad.getNombre()));
         
         
        
