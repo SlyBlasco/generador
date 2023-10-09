@@ -16,6 +16,7 @@ public class data{
     private String dia;
     private String mes;
     private String año;
+    private int año2;
     private String sexo;
     private String entidad;
     
@@ -82,6 +83,15 @@ public class data{
     public void setAño(String año) {
         this.año = año;
     }
+
+    public int getAño2() {
+        return año2;
+    }
+
+    public void setAño2(int año2) {
+        this.año2 = año2;
+    }
+    
     
     
 }
