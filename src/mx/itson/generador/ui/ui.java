@@ -23,7 +23,7 @@ public class ui extends javax.swing.JFrame {
         
     }
     // Metodo que genera la curp
-    public void curp(){
+    public void setting(){
         data entidad = new data();
         entidad.setNombre((txtNombre.getText()));
         entidad.setApellidoPaterno(txtApellidoP.getText());
@@ -34,6 +34,11 @@ public class ui extends javax.swing.JFrame {
         entidad.setAño(Integer.parseInt(txtAño.getText()));
         entidad.setEntidad((String) cbEntidad.getSelectedItem());
         
+    }
+    
+    public void curp(){
+        char ApellidoPrimera = 
+        char ApellidoVocal = 
     }
 
     /**
@@ -276,7 +281,7 @@ public class ui extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnAccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccionActionPerformed
-        curp();
+        
     }//GEN-LAST:event_btnAccionActionPerformed
 
     /**
