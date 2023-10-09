@@ -42,6 +42,10 @@ public class ui extends javax.swing.JFrame {
         return FechaFinal;
     }
 
+    //Metodo que extrae la primera letra del sexo
+    //public char LetraSexo(){
+       // if (entidad.getSexo)
+    //}
     // Metodo que genera la curp
     public void curp() {
         data entidad = new data();
@@ -69,7 +73,16 @@ public class ui extends javax.swing.JFrame {
         //Fecha de nacimiento
         FechaDeNacimiento(entidad.getDia(), entidad.getMes(), entidad.getAño());
         
-        JOptionPane.showMessageDialog(null, FechaDeNacimiento(entidad.getDia(), entidad.getMes(), entidad.getAño()));
+        //Letra del sexo
+        if(entidad.getSexo()=="Hombre"){
+            entidad.setSexo("H");
+        }else if(entidad.getSexo()=="Mujer"){
+            entidad.setSexo("M");
+        }
+        
+        
+        //TESTEO!!!!
+        JOptionPane.showMessageDialog(null, entidad.getSexo());
         
         
        
