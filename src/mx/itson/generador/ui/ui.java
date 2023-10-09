@@ -190,6 +190,26 @@ public class ui extends javax.swing.JFrame {
         }
         return false;
     }
+    
+    public static char encontrarPrimeraConsonanteInterna2(String segundoApellido) {
+        char[] vocales = {'a', 'e', 'i', 'o', 'u'};
+        char primeraConsonante = '\0';
+
+        if (segundoApellido.isEmpty()) {
+            return 'X';
+        }
+
+        for (int i = 1; i < segundoApellido.length(); i++) {
+            char letra = Character.toLowerCase(segundoApellido.charAt(i));
+            if (Character.isLetter(letra) && !esVocal(letra)) {
+                primeraConsonante = letra;
+                break;
+            }
+        }
+
+        return primeraConsonante;
+    }
+
     // Metodo que genera la curp
     public void curp() {
         data entidad = new data();
