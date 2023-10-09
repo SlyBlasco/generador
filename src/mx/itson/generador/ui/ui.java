@@ -5,7 +5,9 @@
 package mx.itson.generador.ui;
 
 import java.awt.Color;
-
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import mx.itson.generador.entidades.data;
 /**
  *
  * @author luism
@@ -18,6 +20,20 @@ public class ui extends javax.swing.JFrame {
     public ui() {
         initComponents();
         getContentPane().setBackground(Color.white);
+        
+    }
+    // Metodo que genera la curp
+    public void curp(){
+        data entidad = new data();
+        entidad.setNombre((txtNombre.getText()));
+        entidad.setApellidoPaterno(txtApellidoP.getText());
+        entidad.setApellidoMaterno(txtApellidoM.getText());
+        entidad.setSexo((String) cbSexo.getSelectedItem());
+        entidad.setDia(Integer.parseInt(txtDia.getText()));
+        entidad.setMes(Integer.parseInt(txtMes.getText()));
+        entidad.setAño(Integer.parseInt(txtAño.getText()));
+        entidad.setEntidad((String) cbEntidad.getSelectedItem());
+        
     }
 
     /**
@@ -122,6 +138,11 @@ public class ui extends javax.swing.JFrame {
         btnAccion.setForeground(new java.awt.Color(255, 153, 153));
         btnAccion.setText("GENERAR");
         btnAccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153)));
+        btnAccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccionActionPerformed(evt);
+            }
+        });
 
         txtNombre.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -253,6 +274,10 @@ public class ui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
+    private void btnAccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccionActionPerformed
+        curp();
+    }//GEN-LAST:event_btnAccionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -310,4 +335,5 @@ public class ui extends javax.swing.JFrame {
     private javax.swing.JTextField txtMes;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+ 
 }
