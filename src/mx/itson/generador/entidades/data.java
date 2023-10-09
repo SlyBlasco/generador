@@ -9,12 +9,14 @@ package mx.itson.generador.entidades;
  *
  * @author luism
  */
-public class data {
+public class data{
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
-    private int fechaNacimiento;
-    private char sexo;
+    private int dia;
+    private int mes;
+    private int año;
+    private String sexo;
     private String entidad;
 
     public String getNombre() {
@@ -41,19 +43,11 @@ public class data {
         this.apellidoMaterno = apellidoMaterno;
     }
 
-    public int getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(int fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
@@ -63,6 +57,30 @@ public class data {
 
     public void setEntidad(String entidad) {
         this.entidad = entidad;
+    }
+
+    public int getDia() {
+        return dia;
+    }
+
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public int getAño() {
+        return año;
+    }
+
+    public void setAño(int año) {
+        this.año = año;
     }
     
     
