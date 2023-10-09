@@ -164,7 +164,32 @@ public class ui extends javax.swing.JFrame {
     
         return entidad.getEntidad();
     }
+    // Metodo que busca la primera consonate no inicial en el primer apellido
+    public static char encontrarPrimeraConsonanteInterna(String apellido) {
+        char[] vocales = {'a', 'e', 'i', 'o', 'u'};
+        char primeraConsonante = '\0';
 
+        for (int i = 1; i < apellido.length(); i++) {
+            char letra = Character.toLowerCase(apellido.charAt(i));
+            if (Character.isLetter(letra) && !esVocal(letra)) {
+                primeraConsonante = letra;
+                break;
+            }
+        }
+
+        return primeraConsonante;
+    }
+
+    public static boolean esVocal(char letra) {
+        char[] vocales = {'a', 'e', 'i', 'o', 'u'};
+        char letraLowerCase = Character.toLowerCase(letra);
+        for (char vocal : vocales) {
+            if (letraLowerCase == vocal) {
+                return true;
+            }
+        }
+        return false;
+    }
     // Metodo que genera la curp
     public void curp() {
         data entidad = new data();
