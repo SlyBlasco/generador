@@ -5,6 +5,7 @@
 package mx.itson.generador.ui;
 
 import java.awt.Color;
+import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import mx.itson.generador.entidades.data;
@@ -165,7 +166,7 @@ public class ui extends javax.swing.JFrame {
         return entidad.getEntidad();
     }
     // Metodo para comprobar si el char actual es vocal.
-    public static boolean esVocal(char letra) {
+    public static boolean EsVocal(char letra) {
         char[] vocales = {'a', 'e', 'i', 'o', 'u'};
         char letraLowerCase = Character.toLowerCase(letra);
         for (char vocal : vocales) {
@@ -177,13 +178,12 @@ public class ui extends javax.swing.JFrame {
     }
     
     // Metodo que busca la primera consonate no inicial en el primer apellido
-    public static char encontrarPrimeraConsonanteInterna(String apellido) {
-        char[] vocales = {'a', 'e', 'i', 'o', 'u'};
+    public static char EncontrarPrimeraConsonanteInterna(String apellido) {
         char primeraConsonante = '\0';
 
         for (int i = 1; i < apellido.length(); i++) {
             char letra = Character.toLowerCase(apellido.charAt(i));
-            if (Character.isLetter(letra) && !esVocal(letra)) {
+            if (Character.isLetter(letra) && !EsVocal(letra)) {
                 primeraConsonante = letra;
                 break;
             }
@@ -192,8 +192,7 @@ public class ui extends javax.swing.JFrame {
         return primeraConsonante;
     }
     // Metodo que busca la primera consonate no inicial en el segundo apellido
-    public static char encontrarPrimeraConsonanteInterna2(String segundoApellido) {
-        char[] vocales = {'a', 'e', 'i', 'o', 'u'};
+    public static char EncontrarPrimeraConsonanteInterna2(String segundoApellido) {
         char primeraConsonante = '\0';
 
         if (segundoApellido.isEmpty()) {
@@ -202,7 +201,7 @@ public class ui extends javax.swing.JFrame {
 
         for (int i = 1; i < segundoApellido.length(); i++) {
             char letra = Character.toLowerCase(segundoApellido.charAt(i));
-            if (Character.isLetter(letra) && !esVocal(letra)) {
+            if (Character.isLetter(letra) && !EsVocal(letra)) {
                 primeraConsonante = letra;
                 break;
             }
@@ -211,8 +210,7 @@ public class ui extends javax.swing.JFrame {
         return primeraConsonante;
     }
     // Metodo que busca la primera consonate no inicial en el nombre
-    public static char encontrarPrimeraConsonanteInternaNombre(String nombre){
-        char[] vocales = {'a', 'e', 'i', 'o', 'u'};
+    public static char EncontrarPrimeraConsonanteInternaNombre(String nombre){
         char primeraConsonante = '\0';
 
         if (nombre.isEmpty()) {
@@ -221,7 +219,7 @@ public class ui extends javax.swing.JFrame {
 
         for (int i = 1; i < nombre.length(); i++) {
             char letra = Character.toLowerCase(nombre.charAt(i));
-            if (Character.isLetter(letra) && !esVocal(letra)) {
+            if (Character.isLetter(letra) && !EsVocal(letra)) {
                 primeraConsonante = letra;
                 break;
             }
@@ -229,7 +227,17 @@ public class ui extends javax.swing.JFrame {
 
         return primeraConsonante;
     }
-
+    // Metodo en que determina que digito final tendra dependiendo del año en el que se nacio
+    public static String DigitosFinales(int año){
+        String digitoFinal;
+        if(año <= 1999){
+            digitoFinal = "0";
+        } else{
+            digitoFinal = "A";
+        } 
+        return digitoFinal;
+    }
+    
     // Metodo que genera la curp
     public void curp() {
         data entidad = new data();
@@ -240,6 +248,7 @@ public class ui extends javax.swing.JFrame {
         entidad.setDia(txtDia.getText());
         entidad.setMes(txtMes.getText());
         entidad.setAño(txtAño.getText());
+        entidad.setAño2(Integer.parseInt(txtAño.getText()));
         entidad.setEntidad((String) cbEntidad.getSelectedItem());
 
         //Primera letra primer apellido.
@@ -268,17 +277,23 @@ public class ui extends javax.swing.JFrame {
         EntidadesAsiglas();
         
         //Primera Consonante interna no inicial del primer apellido
-        encontrarPrimeraConsonanteInterna(entidad.getApellidoPaterno());
+        EncontrarPrimeraConsonanteInterna(entidad.getApellidoPaterno());
         
         //Primera Consonante interna no inicial del segundo apellido
-        encontrarPrimeraConsonanteInterna2(entidad.getApellidoMaterno());
+        EncontrarPrimeraConsonanteInterna2(entidad.getApellidoMaterno());
         
         //Primera consonante interna no incial del nombre
-        encontrarPrimeraConsonanteInternaNombre(entidad.getNombre());
+        EncontrarPrimeraConsonanteInternaNombre(entidad.getNombre());
+        
+        //Digitos
+        DigitosFinales(entidad.getAño2());
         
         //TESTEO!!!!
-        JOptionPane.showMessageDialog(null, encontrarPrimeraConsonanteInternaNombre(entidad.getNombre()));
-        
+        //JOptionPane.showMessageDialog(null, DigitosFinales(entidad.getAño2()));
+        lblResultado.setText("Resultado: " + apellidoPaternoPrimera[0]+ VocalInternaApellido(entidad.getApellidoPaterno()) 
+                + PrimerLetraApellidoMaterno(entidad.getApellidoMaterno()) + nombrePrimera[0] + FechaDeNacimiento(entidad.getDia(), entidad.getMes(), entidad.getAño()) + entidad.getSexo() 
+                + EntidadesAsiglas() + EncontrarPrimeraConsonanteInterna(entidad.getApellidoPaterno()) + EncontrarPrimeraConsonanteInterna2(entidad.getApellidoMaterno()) 
+                + EncontrarPrimeraConsonanteInternaNombre(entidad.getNombre())+ DigitosFinales(entidad.getAño2()) + 1);
         
        
     }
