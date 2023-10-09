@@ -58,9 +58,12 @@ public class ui extends javax.swing.JFrame {
         //Primera letra segundo apellido.
         char[] ApellidoMaternoPrimera = entidad.getApellidoMaterno().toLowerCase().toCharArray();
         
-        //
+        //Primera letra del Nombre de pila
+        char[] NombrePrimera = entidad.getNombre().toLowerCase().toCharArray();
         
-        JOptionPane.showMessageDialog(null, ApellidoMaternoPrimera[0]);
+        JOptionPane.showMessageDialog(null, NombrePrimera[0]);
+        
+        
        
     }
 
