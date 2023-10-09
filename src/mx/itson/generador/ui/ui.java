@@ -37,7 +37,17 @@ public class ui extends javax.swing.JFrame {
         }
         return ' ';
     }
-    
+    // Metodo que busca la primera letra del apellido materno, si no tiene nada se pone una x
+    public char PrimerLetraApellidoMaterno(String apellido){
+        char letra;
+        if("".equals(apellido)){
+           return letra = 'X';
+        }else{
+            char[] apellidoMaternoPrimera = apellido.toLowerCase().toCharArray();
+            return letra = apellidoMaternoPrimera[0];
+        }
+        
+    }
     // Metodo que junta fecha de nacimiento
     public String FechaDeNacimiento(String dia, String mes, String año){
         if(año.length() > 2 ){
@@ -48,10 +58,6 @@ public class ui extends javax.swing.JFrame {
         return FechaFinal;
     }
 
-    //Metodo que extrae la primera letra del sexo
-    //public char LetraSexo(){
-       // if (entidad.getSexo)
-    //}
     // Metodo que genera la curp
     public void curp() {
         data entidad = new data();
@@ -71,7 +77,7 @@ public class ui extends javax.swing.JFrame {
         VocalInternaApellido(entidad.getApellidoPaterno());
         
         //Primera letra segundo apellido.
-        char[] apellidoMaternoPrimera = entidad.getApellidoMaterno().toLowerCase().toCharArray();
+        PrimerLetraApellidoMaterno(entidad.getApellidoMaterno());
         
         //Primera letra del Nombre de pila
         char[] nombrePrimera = entidad.getNombre().toLowerCase().toCharArray();
@@ -87,8 +93,9 @@ public class ui extends javax.swing.JFrame {
         }
         
         
+        
         //TESTEO!!!!
-        JOptionPane.showMessageDialog(null, entidad.getSexo());
+        JOptionPane.showMessageDialog(null, PrimerLetraApellidoMaterno(entidad.getApellidoMaterno()));
         
         
        
