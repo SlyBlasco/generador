@@ -23,7 +23,8 @@ public class ui extends javax.swing.JFrame {
         getContentPane().setBackground(Color.white);
 
     }
-
+    
+    // Metodo que busca la vocal interna del primer apellido
     public char VocalInternaApellido(String apellido) {
         String vocales = "aeiou";
         for (int i = 1; i < apellido.length() - 1; i++) {
@@ -37,7 +38,12 @@ public class ui extends javax.swing.JFrame {
         return ' ';
     }
     
+    // Metodo que junta fecha de nacimiento
     public String FechaDeNacimiento(String dia, String mes, String año){
+        if(año.length() > 2 ){
+           String añoUltimosDigitos = año.substring(año.length() - 2);
+           año = añoUltimosDigitos;
+        }
         String FechaFinal = año + mes + dia;
         return FechaFinal;
     }
@@ -69,6 +75,7 @@ public class ui extends javax.swing.JFrame {
         //Fecha de nacimiento
         FechaDeNacimiento(entidad.getDia(), entidad.getMes(), entidad.getAño());
         
+        // TESTEO !!
         JOptionPane.showMessageDialog(null, FechaDeNacimiento(entidad.getDia(), entidad.getMes(), entidad.getAño()));
         
         
