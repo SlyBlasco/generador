@@ -18,7 +18,7 @@ public class data{
     private int año;
     private String sexo;
     private String entidad;
-
+    
     public String getNombre() {
         return nombre;
     }
