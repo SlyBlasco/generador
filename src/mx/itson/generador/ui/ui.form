@@ -96,10 +96,12 @@
                       <Component id="txtNombre" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblDia" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblMes" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblAño" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblMes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -261,13 +263,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="14" style="0"/>
         </Property>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Hombre&quot;, &quot;Mujer&quot; })" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -282,13 +279,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="14" style="0"/>
         </Property>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Aguascalientes&quot;, &quot;Baja California&quot;, &quot;Baja Califronia Sur&quot;, &quot;Campeche&quot;, &quot;Coahuila de Zaragoza&quot;, &quot;Colima&quot;, &quot;Chiapas&quot;, &quot;Chihuahua&quot;, &quot;Ciudad de Mexico&quot;, &quot;Durango&quot;, &quot;Guanajuato&quot;, &quot;Guerrero&quot;, &quot;Hidalgo&quot;, &quot;Jalisco&quot;, &quot;Mexico&quot;, &quot;Michoacan de Ocampo&quot;, &quot;Morelos&quot;, &quot;Nayarit&quot;, &quot;Nuevo Leon&quot;, &quot;Oaxaca&quot;, &quot;Puebla&quot;, &quot;Queretaro&quot;, &quot;Quinatana Roo&quot;, &quot;San Luis Potosi&quot;, &quot;Sinaloa&quot;, &quot;Sonora&quot;, &quot;Tabasco&quot;, &quot;Tamaulipas&quot;, &quot;Tlaxcala&quot;, &quot;Veracruz de Ignacio de la Llave&quot;, &quot;Yucatan&quot;, &quot;Zacatecas&quot; })" type="code"/>
         </Property>
       </Properties>
       <Events>
