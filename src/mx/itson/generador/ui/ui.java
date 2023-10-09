@@ -8,6 +8,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import mx.itson.generador.entidades.data;
+
 /**
  *
  * @author luism
@@ -20,10 +21,24 @@ public class ui extends javax.swing.JFrame {
     public ui() {
         initComponents();
         getContentPane().setBackground(Color.white);
-        
+
     }
+
+    public char VocalInternaApellido(String apellido) {
+        String vocales = "aeiou";
+        for (int i = 1; i < apellido.length() - 1; i++) {
+            char caracterActual = apellido.charAt(i);
+
+            // Verificar si el caracter actual es una vocal
+            if (vocales.indexOf(caracterActual) != -1) {
+                return caracterActual; // Encontramos la primera vocal interna
+            }
+        }
+        return ' ';
+    }
+
     // Metodo que genera la curp
-    public void curp(){
+    public void curp() {
         data entidad = new data();
         entidad.setNombre((txtNombre.getText()));
         entidad.setApellidoPaterno(txtApellidoP.getText());
@@ -33,15 +48,20 @@ public class ui extends javax.swing.JFrame {
         entidad.setMes(Integer.parseInt(txtMes.getText()));
         entidad.setAño(Integer.parseInt(txtAño.getText()));
         entidad.setEntidad((String) cbEntidad.getSelectedItem());
-        
-        //Primera letra.
-        char[] ApellidoPrimera = entidad.getApellidoPaterno().toCharArray();
-        
+
+        //Primera letra primer apellido.
+        char[] ApellidoPaternoPrimera = entidad.getApellidoPaterno().toLowerCase().toCharArray();
+
         //Primera vocal interna apellido
-        char VocalInternaApellido = entidad.getApellidoPaterno().toCharArray()
+        VocalInternaApellido(entidad.getApellidoPaterno());
         
-        JOptionPane.showMessageDialog(null, ApellidoPrimera[0]);
-        //char ApellidoVocal = 
+        //Primera letra segundo apellido.
+        char[] ApellidoMaternoPrimera = entidad.getApellidoMaterno().toLowerCase().toCharArray();
+        
+        //
+        
+        JOptionPane.showMessageDialog(null, ApellidoMaternoPrimera[0]);
+       
     }
 
     /**
@@ -344,5 +364,5 @@ public class ui extends javax.swing.JFrame {
     private javax.swing.JTextField txtMes;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
- 
+
 }
