@@ -27,9 +27,10 @@ public class ui extends javax.swing.JFrame {
     
     // Metodo que busca la vocal interna del primer apellido
     public char VocalInternaApellido(String apellido) {
-        String vocales = "aeiou";
+        String vocales = "AEIOU";
         for (int i = 1; i < apellido.length() - 1; i++) {
-            char caracterActual = apellido.charAt(i);
+            String toUpperCase = apellido.toUpperCase();
+            char caracterActual = toUpperCase.charAt(i);
 
             // Verificar si el caracter actual es una vocal
             if (vocales.indexOf(caracterActual) != -1) {
@@ -44,7 +45,7 @@ public class ui extends javax.swing.JFrame {
         if("".equals(apellido)){
            return letra = 'X';
         }else{
-            char[] apellidoMaternoPrimera = apellido.toLowerCase().toCharArray();
+            char[] apellidoMaternoPrimera = apellido.toUpperCase().toCharArray();
             return letra = apellidoMaternoPrimera[0];
         }
         
@@ -58,6 +59,16 @@ public class ui extends javax.swing.JFrame {
         String FechaFinal = año + mes + dia;
         return FechaFinal;
     }
+    
+    public static String sexo(String sexo){
+            if(sexo == "Hombre"){
+                sexo = "H";
+            }else if(sexo == "Mujer"){
+                sexo = "M";
+            }
+            return sexo;
+        }
+    
     public String EntidadesAsiglas(){
         
         data entidad = new data();
@@ -167,10 +178,10 @@ public class ui extends javax.swing.JFrame {
     }
     // Metodo para comprobar si el char actual es vocal.
     public static boolean EsVocal(char letra) {
-        char[] vocales = {'a', 'e', 'i', 'o', 'u'};
-        char letraLowerCase = Character.toLowerCase(letra);
+        char[] vocales = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
+        char letraUpperCase = Character.toUpperCase(letra);
         for (char vocal : vocales) {
-            if (letraLowerCase == vocal) {
+            if (letraUpperCase == vocal) {
                 return true;
             }
         }
@@ -182,7 +193,7 @@ public class ui extends javax.swing.JFrame {
         char primeraConsonante = '\0';
 
         for (int i = 1; i < apellido.length(); i++) {
-            char letra = Character.toLowerCase(apellido.charAt(i));
+            char letra = Character.toUpperCase(apellido.charAt(i));
             if (Character.isLetter(letra) && !EsVocal(letra)) {
                 primeraConsonante = letra;
                 break;
@@ -200,7 +211,7 @@ public class ui extends javax.swing.JFrame {
         }
 
         for (int i = 1; i < segundoApellido.length(); i++) {
-            char letra = Character.toLowerCase(segundoApellido.charAt(i));
+            char letra = Character.toUpperCase(segundoApellido.charAt(i));
             if (Character.isLetter(letra) && !EsVocal(letra)) {
                 primeraConsonante = letra;
                 break;
@@ -218,7 +229,7 @@ public class ui extends javax.swing.JFrame {
         }
 
         for (int i = 1; i < nombre.length(); i++) {
-            char letra = Character.toLowerCase(nombre.charAt(i));
+            char letra = Character.toUpperCase(nombre.charAt(i));
             if (Character.isLetter(letra) && !EsVocal(letra)) {
                 primeraConsonante = letra;
                 break;
@@ -228,12 +239,12 @@ public class ui extends javax.swing.JFrame {
         return primeraConsonante;
     }
     // Metodo en que determina que digito final tendra dependiendo del año en el que se nacio
-    public static String DigitosFinales(int año){
-        String digitoFinal;
+    public static char DigitosFinales(int año){
+        char digitoFinal;
         if(año <= 1999){
-            digitoFinal = "0";
+            digitoFinal = '0';
         } else{
-            digitoFinal = "A";
+            digitoFinal = 'A';
         } 
         return digitoFinal;
     }
@@ -241,59 +252,55 @@ public class ui extends javax.swing.JFrame {
     // Metodo que genera la curp
     public void curp() {
         data entidad = new data();
-        entidad.setNombre((txtNombre.getText()));
-        entidad.setApellidoPaterno(txtApellidoP.getText());
-        entidad.setApellidoMaterno(txtApellidoM.getText());
+        entidad.setNombre((txtNombre.getText().trim()));
+        entidad.setApellidoPaterno(txtApellidoP.getText().trim());
+        entidad.setApellidoMaterno(txtApellidoM.getText().trim());
         entidad.setSexo((String) cbSexo.getSelectedItem());
-        entidad.setDia(txtDia.getText());
-        entidad.setMes(txtMes.getText());
-        entidad.setAño(txtAño.getText());
+        entidad.setDia(txtDia.getText().trim());
+        entidad.setMes(txtMes.getText().trim());
+        entidad.setAño(txtAño.getText().trim());
         entidad.setAño2(Integer.parseInt(txtAño.getText()));
         entidad.setEntidad((String) cbEntidad.getSelectedItem());
 
         //Primera letra primer apellido.
-        char[] apellidoPaternoPrimera = entidad.getApellidoPaterno().toLowerCase().toCharArray();
-
+        char[] apellidoPaternoPrimera = entidad.getApellidoPaterno().toUpperCase().toCharArray();
+        char primero = apellidoPaternoPrimera[0];
+        
         //Primera vocal interna apellido
-        VocalInternaApellido(entidad.getApellidoPaterno());
+        char segundo = VocalInternaApellido(entidad.getApellidoPaterno());
         
         //Primera letra segundo apellido.
-        PrimerLetraApellidoMaterno(entidad.getApellidoMaterno());
+        char tercero = PrimerLetraApellidoMaterno(entidad.getApellidoMaterno());
         
         //Primera letra del Nombre de pila
-        char[] nombrePrimera = entidad.getNombre().toLowerCase().toCharArray();
+        char[] nombrePrimera = entidad.getNombre().toUpperCase().toCharArray();
+        char cuarto = nombrePrimera[0];
         
         //Fecha de nacimiento
-        FechaDeNacimiento(entidad.getDia(), entidad.getMes(), entidad.getAño());
+        String quinto = FechaDeNacimiento(entidad.getDia(), entidad.getMes(), entidad.getAño());
         
         //Letra del sexo
-        if(entidad.getSexo()=="Hombre"){
-            entidad.setSexo("H");
-        }else if(entidad.getSexo()=="Mujer"){
-            entidad.setSexo("M");
-        }
+        String sexto = sexo(entidad.getSexo());
         
         //Entidades
-        EntidadesAsiglas();
+        String septimo = EntidadesAsiglas();
         
         //Primera Consonante interna no inicial del primer apellido
-        EncontrarPrimeraConsonanteInterna(entidad.getApellidoPaterno());
+        char octavo = EncontrarPrimeraConsonanteInterna(entidad.getApellidoPaterno());
         
         //Primera Consonante interna no inicial del segundo apellido
-        EncontrarPrimeraConsonanteInterna2(entidad.getApellidoMaterno());
+        char noveno = EncontrarPrimeraConsonanteInterna2(entidad.getApellidoMaterno());
         
         //Primera consonante interna no incial del nombre
-        EncontrarPrimeraConsonanteInternaNombre(entidad.getNombre());
+        char decimo = EncontrarPrimeraConsonanteInternaNombre(entidad.getNombre());
         
         //Digitos
-        DigitosFinales(entidad.getAño2());
+        char onceavo = DigitosFinales(entidad.getAño2());
         
         //TESTEO!!!!
         //JOptionPane.showMessageDialog(null, DigitosFinales(entidad.getAño2()));
-        lblResultado.setText("Resultado: " + apellidoPaternoPrimera[0]+ VocalInternaApellido(entidad.getApellidoPaterno()) 
-                + PrimerLetraApellidoMaterno(entidad.getApellidoMaterno()) + nombrePrimera[0] + FechaDeNacimiento(entidad.getDia(), entidad.getMes(), entidad.getAño()) + entidad.getSexo() 
-                + EntidadesAsiglas() + EncontrarPrimeraConsonanteInterna(entidad.getApellidoPaterno()) + EncontrarPrimeraConsonanteInterna2(entidad.getApellidoMaterno()) 
-                + EncontrarPrimeraConsonanteInternaNombre(entidad.getNombre())+ DigitosFinales(entidad.getAño2()) + 1);
+        
+        lblResultado.setText("Resultado: " + primero + segundo + tercero + cuarto + quinto + sexto + septimo + octavo + noveno + decimo + onceavo + 1);
         
        
     }
@@ -342,10 +349,10 @@ public class ui extends javax.swing.JFrame {
         panelArriba.setLayout(panelArribaLayout);
         panelArribaLayout.setHorizontalGroup(
             panelArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelArribaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelArribaLayout.createSequentialGroup()
+                .addGap(255, 255, 255)
                 .addComponent(lblTitulo)
-                .addGap(255, 255, 255))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelArribaLayout.setVerticalGroup(
             panelArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
