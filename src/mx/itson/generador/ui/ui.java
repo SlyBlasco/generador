@@ -244,7 +244,14 @@ public class ui extends javax.swing.JFrame {
             entidad.setSexo("M");
         }
         
+        //Entidades
+        EntidadesAsiglas();
         
+        //Primera Consonante interna no inicial del primer apellido
+        encontrarPrimeraConsonanteInterna(entidad.getApellidoPaterno());
+        
+        //Primera Consonante interna no inicial del segundo apellido
+        encontrarPrimeraConsonanteInterna2(entidad.getApellidoMaterno());
         
         //TESTEO!!!!
         JOptionPane.showMessageDialog(null, PrimerLetraApellidoMaterno(entidad.getApellidoMaterno()));
