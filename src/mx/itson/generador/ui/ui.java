@@ -36,6 +36,11 @@ public class ui extends javax.swing.JFrame {
         }
         return ' ';
     }
+    
+    public String FechaDeNacimiento(String dia, String mes, String año){
+        String FechaFinal = año + mes + dia;
+        return FechaFinal;
+    }
 
     // Metodo que genera la curp
     public void curp() {
@@ -44,24 +49,27 @@ public class ui extends javax.swing.JFrame {
         entidad.setApellidoPaterno(txtApellidoP.getText());
         entidad.setApellidoMaterno(txtApellidoM.getText());
         entidad.setSexo((String) cbSexo.getSelectedItem());
-        entidad.setDia(Integer.parseInt(txtDia.getText()));
-        entidad.setMes(Integer.parseInt(txtMes.getText()));
-        entidad.setAño(Integer.parseInt(txtAño.getText()));
+        entidad.setDia(txtDia.getText());
+        entidad.setMes(txtMes.getText());
+        entidad.setAño(txtAño.getText());
         entidad.setEntidad((String) cbEntidad.getSelectedItem());
 
         //Primera letra primer apellido.
-        char[] ApellidoPaternoPrimera = entidad.getApellidoPaterno().toLowerCase().toCharArray();
+        char[] apellidoPaternoPrimera = entidad.getApellidoPaterno().toLowerCase().toCharArray();
 
         //Primera vocal interna apellido
         VocalInternaApellido(entidad.getApellidoPaterno());
         
         //Primera letra segundo apellido.
-        char[] ApellidoMaternoPrimera = entidad.getApellidoMaterno().toLowerCase().toCharArray();
+        char[] apellidoMaternoPrimera = entidad.getApellidoMaterno().toLowerCase().toCharArray();
         
         //Primera letra del Nombre de pila
-        char[] NombrePrimera = entidad.getNombre().toLowerCase().toCharArray();
+        char[] nombrePrimera = entidad.getNombre().toLowerCase().toCharArray();
         
-        JOptionPane.showMessageDialog(null, NombrePrimera[0]);
+        //Fecha de nacimiento
+        FechaDeNacimiento(entidad.getDia(), entidad.getMes(), entidad.getAño());
+        
+        JOptionPane.showMessageDialog(null, FechaDeNacimiento(entidad.getDia(), entidad.getMes(), entidad.getAño()));
         
         
        

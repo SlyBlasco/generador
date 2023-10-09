@@ -13,9 +13,9 @@ public class data{
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
-    private int dia;
-    private int mes;
-    private int año;
+    private String dia;
+    private String mes;
+    private String año;
     private String sexo;
     private String entidad;
     
@@ -59,27 +59,27 @@ public class data{
         this.entidad = entidad;
     }
 
-    public int getDia() {
+    public String getDia() {
         return dia;
     }
 
-    public void setDia(int dia) {
+    public void setDia(String dia) {
         this.dia = dia;
     }
 
-    public int getMes() {
+    public String getMes() {
         return mes;
     }
 
-    public void setMes(int mes) {
+    public void setMes(String mes) {
         this.mes = mes;
     }
 
-    public int getAño() {
+    public String getAño() {
         return año;
     }
 
-    public void setAño(int año) {
+    public void setAño(String año) {
         this.año = año;
     }
     
